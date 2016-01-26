@@ -9,7 +9,7 @@ TRACE=0
 HD=$(basename `mount | grep "on / " | cut -f 1 -d " "` | sed 's/\(...\).*/\1/g')
 
 # number of 1M blocks of the files to create for seq reading/writing
-NUM_BLOCKS_CREATE_SEQ=200
+NUM_BLOCKS_CREATE_SEQ=500
 
 # number of 1M blocks of the files to create for rand reading/writing
 # (the larger the better for randomness)
