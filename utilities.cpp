@@ -242,7 +242,7 @@ QString check_mask_for_scheduler(const unsigned int sched_mask, const unsigned i
 
 void change_testpar(test_settings_t* test,const bool is_light)
 {
-    test->adv_settings.max_ratio=16500;
+    test->adv_settings.max_rate=16500;
     test->adv_settings.max_startup=60;
     test->adv_settings.sync=true;
     test->adv_settings.test_time=20;
