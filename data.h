@@ -95,7 +95,7 @@ struct advanced_settings_t
 
     unsigned int test_time = 20;
     unsigned int max_startup = 60;
-    unsigned int max_ratio = 16500;
+    unsigned int max_rate = 16500;
     bool sync = true;
 
 };

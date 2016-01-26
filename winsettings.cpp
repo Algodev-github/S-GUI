@@ -12,8 +12,8 @@ extern QString dir_bench;
 
 const int NUM_REQUIRED_FILE = 7;
 
-const int MIN_RATIO = 10000;
-const int MAX_RATIO = 20000;
+const int MIN_rate = 10000;
+const int MAX_rate = 20000;
 
 
 /**
@@ -68,9 +68,9 @@ WinSettings::WinSettings(QWidget *parent) :
     ui->txt_test_time->setText(QString::number(test_sets.adv_settings.test_time));
     ui->txt_max_startup->setText(QString::number(test_sets.adv_settings.max_startup));
 
-    ui->txt_max_ratio->setText(QString::number(test_sets.adv_settings.max_ratio));
-    QString desc_ratio = "Min value is:\t"+QString::number(MIN_RATIO)+"\nMax value is:\t"+QString::number(MAX_RATIO);
-    ui->lbl_max_ratio_desc->setText(desc_ratio);
+    ui->txt_max_rate->setText(QString::number(test_sets.adv_settings.max_rate));
+    QString desc_rate = "Min value is:\t"+QString::number(MIN_rate)+"\nMax value is:\t"+QString::number(MAX_rate);
+    ui->lbl_max_rate_desc->setText(desc_rate);
 
     ui->line_bench_dir->setText(dir_bench);
     ui->line_base_dir->setText(test_sets.adv_settings.dir_test);
@@ -144,7 +144,7 @@ void WinSettings::on_btn_default_clicked()
 
     ui->txt_test_time->setText(QString::number(default_adv.test_time));
     ui->txt_max_startup->setText(QString::number(default_adv.max_startup));
-    ui->txt_max_ratio->setText(QString::number(default_adv.max_ratio));
+    ui->txt_max_rate->setText(QString::number(default_adv.max_rate));
     ui->line_bench_dir->setText(default_adv.default_dir_bench);
     ui->line_base_dir->setText(default_adv.dir_test);
     ui->chk_sync->setChecked(default_adv.sync);
@@ -152,7 +152,7 @@ void WinSettings::on_btn_default_clicked()
     /*Set reads/write numbers to default--> 1*/
     ui->slc_5->setText("1");
     ui->slc_6->setText("1");
-    ui->txt_file_size->setText("2000");
+    ui->txt_file_size->setText("500");
     user_has_saved=false;
     return;
 
@@ -167,11 +167,11 @@ void WinSettings::on_btn_cancel_clicked()
 bool WinSettings::correct_input()
 {
 
-    if (!ui->txt_max_ratio->text().toInt()
-        || ui->txt_max_ratio->text().toInt() < MIN_RATIO
-        || ui->txt_max_ratio->text().toInt() > MAX_RATIO)
+    if (!ui->txt_max_rate->text().toInt()
+        || ui->txt_max_rate->text().toInt() < MIN_rate
+        || ui->txt_max_rate->text().toInt() > MAX_rate)
     {
-        QMessageBox::warning(this,"ERROR", "Max ratio value not correct", QMessageBox::Ok);
+        QMessageBox::warning(this,"ERROR", "Max rate value not correct", QMessageBox::Ok);
         return false;
     }
 
@@ -212,7 +212,7 @@ void WinSettings::on_btn_save_clicked()
         exit(45);
 
     adv.dir_test = ui->line_base_dir->text();
-    adv.max_ratio = static_cast<unsigned int>(ui->txt_max_ratio->text().toInt());
+    adv.max_rate = static_cast<unsigned int>(ui->txt_max_rate->text().toInt());
     adv.test_time = static_cast<unsigned int>(ui->txt_test_time->text().toInt());
     adv.max_startup = static_cast<unsigned int>(ui->txt_max_startup->text().toInt());
     adv.sync = ui->chk_sync->isChecked();
