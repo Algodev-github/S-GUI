@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>info_test.txt</file>
+        <file>algodevlogo.png</file>
+        <file>algo-dev.png</file>
+    </qresource>
+</RCC>
