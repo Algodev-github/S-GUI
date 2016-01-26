@@ -184,7 +184,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLineEdit" name="txt_max_ratio">
+     <widget class="QLineEdit" name="txt_max_rate">
       <property name="geometry">
        <rect>
         <x>450</x>
@@ -272,7 +272,7 @@
        <enum>Qt::AutoText</enum>
       </property>
      </widget>
-     <widget class="QLabel" name="lbl_max_ratio">
+     <widget class="QLabel" name="lbl_max_rate">
       <property name="geometry">
        <rect>
         <x>310</x>
@@ -282,10 +282,10 @@
        </rect>
       </property>
       <property name="text">
-       <string>Max ratio:</string>
+       <string>Max rate:</string>
       </property>
      </widget>
-     <widget class="QLabel" name="lbl_max_ratio_desc">
+     <widget class="QLabel" name="lbl_max_rate_desc">
       <property name="geometry">
        <rect>
         <x>310</x>
