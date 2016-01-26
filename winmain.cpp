@@ -532,6 +532,13 @@ void WinMain::on_btn_clean_clicked()
 
 void WinMain::on_lst_history_itemDoubleClicked(QListWidgetItem *item)
 {
+
+	for(int i=0; i<Win_test_plots.length(); i++)
+	{
+                if(!Win_test_plots[i]->isVisible())
+                    Win_test_plots.remove(i);
+	}
+
     //qDebug()<<"premuto sull'item:"<<item->text();
     QString file_to_open = stat_files[ui->lst_history->currentRow()];
     const QString file_path = PATH_RESULTS+"/"+ file_to_open;
