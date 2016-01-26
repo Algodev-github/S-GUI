@@ -152,7 +152,7 @@ void WinSettings::on_btn_default_clicked()
     /*Set reads/write numbers to default--> 1*/
     ui->slc_5->setText("1");
     ui->slc_6->setText("1");
-    ui->txt_file_size->setText("2000");
+    ui->txt_file_size->setText("500");
     user_has_saved=false;
     return;
 
