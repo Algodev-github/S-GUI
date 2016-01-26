@@ -43,7 +43,5 @@ APPLICATION START-UP TIME
 
 
 TODO:
-1)Handle closing of test windows: as of now, when one of these windows is closed,
-the related data structure is not deallocated.
-2)Check and, if needed, fix build of S.desktop
+1)Check and, if needed, fix build of S.desktop
 
