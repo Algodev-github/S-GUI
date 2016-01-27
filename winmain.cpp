@@ -436,7 +436,8 @@ void WinMain::enable_scheduler_box()
         {
             ui->box_2->setChecked(true);
             setted=true;
-        }
+        }else
+			ui->box_2->setChecked(false);
     }
     else
         ui->box_2->setEnabled(false);
@@ -448,7 +449,8 @@ void WinMain::enable_scheduler_box()
         {
             ui->box_3->setChecked(true);
             setted=true;
-        }
+        }else
+			ui->box_3->setChecked(false);
     }
     else
         ui->box_3->setEnabled(false);
@@ -460,7 +462,8 @@ void WinMain::enable_scheduler_box()
         {
             ui->box_4->setChecked(true);
             setted=true;
-        }
+        }else
+			ui->box_4->setChecked(false);
     }
     else
         ui->box_4->setEnabled(false);

@@ -164,7 +164,10 @@ void WinTestPlot::setupPlotAfterTest(QCustomPlot *customPlot,const QVector<doubl
     ticks<<1<<3<<5<<7;
 
     double max_value=get_max_from_data(data);
-    customPlot->yAxis->setRange(0,max_value+5);
+	int offset = 5;
+	if(max_value<offset)
+		offset=max_value/4;
+    customPlot->yAxis->setRange(0,max_value+offset);
 
     /*Impostazione asse X*/
     customPlot->xAxis->setAutoTicks(false);

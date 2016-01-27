@@ -392,9 +392,9 @@ QString get_name_file_stat(const test_settings_t& test, const unsigned int& mask
     else name_file += '-';
     if (mask_sched & CFQ_MASK) name_file += 'X';
     else name_file += '-';
-    if (mask_sched & DEAD_MASK) name_file += 'X';
-    else name_file += '-';
     if (mask_sched & NOOP_MASK) name_file += 'X';
+    else name_file += '-';
+    if (mask_sched & DEAD_MASK) name_file += 'X';
     else name_file += '-';
 
     switch (test.type_rw) {
@@ -466,8 +466,8 @@ QString parsing_name_file(const QString& qt_file_name)
     /* Selezionare lo scheduler, va da 1 a 4*/
     if (name_file[1] == 'X') caption+= "bfq ";
     if (name_file[2] == 'X') caption+= "cfq ";
-    if (name_file[3] == 'X') caption+= "dead ";
-    if (name_file[4] == 'X') caption+= "noop ";
+    if (name_file[3] == 'X') caption+= "noop ";
+    if (name_file[4] == 'X') caption+= "dead ";
 
     caption += "RAW TYPE: ";
 
