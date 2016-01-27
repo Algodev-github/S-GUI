@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>S</string>
+   <string>S-GUI</string>
   </property>
   <widget class="QComboBox" name="slc_tests">
    <property name="geometry">

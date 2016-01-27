@@ -68,11 +68,8 @@ void WinMain::setupGui_test_start()
 
 void WinMain::setupGui_test_ended()
 {
+    check_sys_schedulers();
     ui->btn_start->setEnabled(true);
-    ui->box_1->setEnabled(true);
-    ui->box_2->setEnabled(true);
-    ui->box_3->setEnabled(true);
-    ui->box_4->setEnabled(true);
     ui->btn_clean->setEnabled(true);
     ui->rbtn_custom->setEnabled(true);
     ui->rbtn_heavy->setEnabled(true);

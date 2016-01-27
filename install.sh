@@ -1,7 +1,7 @@
 #!/bin/bash
-#This script install S benchmark suite
+#This script install S-GUI benchmark suite
 
-HELP="This script install the S benchmark suite\n
+HELP="This script install the S-GUI benchmark suite\n
 Usage: install.sh [OPTIONS=*]\n
 OPTIONS:
 -h, --help : display help
@@ -86,14 +86,14 @@ fi
 
 echo "Correct version of Qt...yes"
 
-if [ ! -e "S.pro" ]; 
+if [ ! -e "S-GUI.pro" ]; 
 then
-	echo "S.pro not found. Aborting..."
+	echo "S-GUI.pro not found. Aborting..."
 	exit 1
 fi
 
 echo "Running qmake..."
-$QMAKE S.pro
+$QMAKE S-GUI.pro
 
 echo "Running make..."
 make -j$PROC
@@ -101,17 +101,17 @@ make -j$PROC
 if [ $? -eq 0 ];
 then
 	echo "Creating desktop shortcut..."
-	touch S.desktop
+	touch S-GUI.desktop
 	echo -e "[Desktop Entry]\n
 Version=1.0
 Type=Application
 Terminal=false
-Exec=gksu -k $PWD/S
-Name=S
+Exec=gksu -k $PWD/S-GUI
+Name=S-GUI
 Comment=Benchmarking tools
-Icon=$PWD/algodevlogo.png" > S.desktop
-	chmod +x S.desktop
-	echo "Installation finished. Run with sudo -E ./S"
+Icon=$PWD/algodevlogo.png" > S-GUI.desktop
+	chmod +x S-GUI.desktop
+	echo "Installation finished. Run with sudo -E ./S-GUI"
 fi
 
 
