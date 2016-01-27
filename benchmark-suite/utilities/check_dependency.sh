@@ -18,7 +18,6 @@ echo "Check principal dependencies..."
 check_dep awk iostat bc time fio
 
 echo "Check secondary dependencies..."
-echo "If there are not all the dependencies, there will be no problem bro"
 check_dep pv git make
 
 

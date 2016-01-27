@@ -48,6 +48,11 @@ fi
 echo "Checking main dependencies..."
 ./$DIRECTORY_CHECK_DEP
 
+if [ $? == "1" ]
+then 
+	exit 1
+fi 
+
 echo "Checking QT 5..." 
 
 

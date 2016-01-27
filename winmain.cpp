@@ -23,6 +23,7 @@ WinMain::WinMain(QWidget *parent) :
     ui(new Ui::WinMain)
 {
     ui->setupUi(this);
+	ui->menuBar->setNativeMenuBar(false);
     startup_iterator=1;
     ui->logo->setPixmap(QPixmap(":/algodevlogo.png"));
     create_results_folder();
@@ -68,7 +69,7 @@ void WinMain::setupGui_test_start()
 
 void WinMain::setupGui_test_ended()
 {
-    check_sys_schedulers();
+    enable_scheduler_box();
     ui->btn_start->setEnabled(true);
     ui->btn_clean->setEnabled(true);
     ui->rbtn_custom->setEnabled(true);
@@ -107,10 +108,18 @@ void WinMain::handle_test_finished(int exit_status)
 
 void WinMain::on_btn_start_clicked()
 {    
+  
+    //Check if there is at least one scheduler checked
+    if( ui->box_1->isChecked() ||
+	ui->box_2->isChecked()||
+	ui->box_3->isChecked()||
+	ui->box_4->isChecked() )
+	{
+		this->set_mask();
+   		this->set_scheduler_for_test();
+    		this->start_test();
+	}
 
-    this->set_mask();
-    this->set_scheduler_for_test();
-    this->start_test();
 }
 
 void WinMain::start_test()
