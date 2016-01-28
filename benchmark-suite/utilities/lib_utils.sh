@@ -280,12 +280,3 @@ function print_save_agg_thr
 	echo
 	echo Stats written to $1
 }
-
-function create_pid_file
-{
-	name_of_test=$1
-	
-	cd ..
-	echo $$ > ../pid_file.txt
-	cd $name_of_test
-}

@@ -8,7 +8,7 @@ OPTIONS:
 -j, --proc-num: number of processors to use with make -j
 -q, --qmake: custom qmake command
 #--hidpi: enable hidpi support"
-DIRECTORY_CHECK_DEP=benchmark-suite/utilities/check_dependency.sh
+DIRECTORY_CHECK_DEP=benchmark-suite/utilities/check_dependencies.sh
 PROC=1
 RETINA=NO
 QMAKE=qmake
@@ -45,8 +45,8 @@ then
 	exit 1
 fi
 
-echo "Checking main dependencies..."
-./$DIRECTORY_CHECK_DEP
+echo "Checking S dependencies..."
+./$DIRECTORY_CHECK_DEP awk time fio iostat dd xterm
 
 if [ $? == "1" ]
 then 

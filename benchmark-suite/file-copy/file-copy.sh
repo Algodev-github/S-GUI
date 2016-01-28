@@ -1,5 +1,11 @@
 #!/bin/bash
 # Copyright (C) 2013 Paolo Valente <paolo.valente@unimore.it>
+
+../utilities/check_dependencies.sh awk dd fio iostat pv
+if [[ $? -ne 0 ]]; then
+	exit
+fi
+
 . ../config_params.sh
 . ../utilities/lib_utils.sh
 
@@ -37,13 +43,8 @@ rm -rf results-${sched}
 mkdir -p results-$sched
 cd results-$sched
 
-if [ "$sched" != "" ] ; then
-	# switch to the desired scheduler
-	echo Switching to $sched
-	echo $sched > /sys/block/$HD/queue/scheduler
-else
-	sched=`cat /sys/block/$HD/queue/scheduler`
-fi
+# switch to the desired scheduler
+set_scheduler
 
 # setup a quick shutdown for Ctrl-C 
 trap "shutdwn dd; exit" sigint
@@ -54,6 +55,9 @@ if [ "$SYNC" != "yes" ]; then
 else
 	flush_caches
 fi
+
+# create the file to copy if it doesn't exist
+create_files $NUM_COPIERS seq $SUFFIX
 
 init_tracing
 set_tracing 1
@@ -77,7 +81,6 @@ do
 done
 
 shutdwn dd
-clear
 
 cd ..
 

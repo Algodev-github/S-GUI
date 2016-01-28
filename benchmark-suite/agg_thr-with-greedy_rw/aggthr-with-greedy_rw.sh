@@ -1,6 +1,12 @@
 #!/bin/bash
 # Copyright (C) 2013 Paolo Valente <paolo.valente@unimore.it>
 #                    Arianna Avanzini <avanzini.arianna@gmail.com>
+
+../utilities/check_dependencies.sh awk dd fio iostat
+if [[ $? -ne 0 ]]; then
+	exit
+fi
+
 . ../config_params.sh
 . ../utilities/lib_utils.sh
 
@@ -50,12 +56,10 @@ rm -f $FILE_TO_WRITE
 
 set_scheduler
 
-
 # create and enter work dir
 rm -rf results-${sched}
 mkdir -p results-$sched
 cd results-$sched
-
 
 # setup a quick shutdown for Ctrl-C 
 trap "shutdwn 'fio iostat'; exit" sigint

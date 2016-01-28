@@ -1,6 +1,12 @@
 #!/bin/bash
 # Copyright (C) 2013 Paolo Valente <paolo.valente@unimore.it>
 #                    Arianna Avanzini <avanzini.arianna@gmail.com>
+
+../utilities/check_dependencies.sh awk dd fio time iostat
+if [[ $? -ne 0 ]]; then
+	exit
+fi
+
 LC_NUMERIC=C
 . ../config_params.sh
 . ../utilities/lib_utils.sh
@@ -172,8 +178,6 @@ rm -f $FILE_TO_WRITE
 
 set_scheduler
 
-
-
 # create and enter work dir
 rm -rf results-${sched}
 mkdir -p results-$sched
@@ -212,7 +216,6 @@ shutdwn 'fio iostat'
 compute_statistics
 
 cd ..
-
 
 # rm work dir
 rm -rf results-${sched}

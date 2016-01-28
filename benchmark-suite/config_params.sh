@@ -15,25 +15,31 @@ NUM_BLOCKS_CREATE_SEQ=500
 # (the larger the better for randomness)
 NUM_BLOCKS_CREATE_RAND=$(($NUM_BLOCKS_CREATE_SEQ * 10))
 
-# portion, in 1M blocks, to read for each file, used only in fairness.sh
+# portion, in 1M blocks, to read for each file, used only in fairness.sh;
+# make sure it is not larger than either $NUM_BLOCKS_CREATE_SEQ or
+# $NUM_BLOCKS_CREATE RAND
 NUM_BLOCKS=2000
 
 # where files are read from or written to
-BASE_DIR=/tmp/test
-
-
-
-
+BASE_DIR=/var/lib/bfq
+if test ! -d $BASE_DIR ; then
+    mkdir $BASE_DIR
+fi
+if test ! -w $BASE_DIR ; then
+    echo "$BASE_DIR is not writeable, reverting to /tmp/test"
+    BASE_DIR=/tmp/test
+fi
 
 # file names
 BASE_SEQ_FILE_PATH=$BASE_DIR/largefile
 FILE_TO_RAND_READ=$BASE_DIR/verylargefile_read
 FILE_TO_RAND_WRITE=$BASE_DIR/verylargefile_write
 
-# the make, git merge and git checkout tests play with 2.6.30, 2.6.32 and
-# 2.6.33. You must provide a git tree containing at least these three versions,
+# the make, git merge and git checkout tests play with v4.0, v4.1 and
+# v4.2. You must provide a git tree containing at least these three versions,
 # and store the path to the tree in the following parameter.
-KERN_DIR=$BASE_DIR/fake_tree/linux-2.6
+KERN_REMOTE=https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git
+KERN_DIR=$BASE_DIR/fake_tree/linux
 #	NOTE:
 #	For the make test to run without blocking, you must be sure that the
 #	tree contains a valid .config for these kernels (a valid .config
