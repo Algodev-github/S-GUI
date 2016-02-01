@@ -78,7 +78,7 @@ enum type_rw_t{
  * @brief Structure that contains the advanced settings
  * used in the tests.
  * @dir_test: path to the base test directory, where the files are read and
- * written to. Default is /tmp/test
+ * written to. Default is /var/lib/bfq
  *
  * @test_time : maximum duration allowed for each test(in seconds)
  * @max_startup: maximum duration allowed for each command
@@ -91,7 +91,7 @@ struct advanced_settings_t
 {
 
     QString default_dir_bench="benchmark-suite/";
-    QString dir_test = "/tmp/test";
+    QString dir_test = "/var/lib/bfq";
 
     unsigned int test_time = 20;
     unsigned int max_startup = 60;
