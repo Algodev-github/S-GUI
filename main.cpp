@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
        exit(NO_ROOT_PRIVILEGES_ERROR);
     }
     QApplication S(argc, argv);
-    S.setWindowIcon(QIcon(":/algo-dev.png"));
+    S.setWindowIcon(QIcon(":/S_GUI_logo.jpg"));
     WinMain Win_main;
     Win_main.show();
 
